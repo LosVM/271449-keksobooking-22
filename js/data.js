@@ -9,13 +9,13 @@ const ACCOMMODATION_DESCRIPTION = 'Здесь будет описание объ
 const ACCOMMODATION_PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel1.jpg', 
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 
-  'http://o0.github.io/assets/images/tokyo/hotel3.jpg]',
+  'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
 ];
 const LOCATION_X = getRandomFraction(35.65000, 35.75000, 5);
 const LOCATION_Y = getRandomFraction(139.70000, 139.80000, 5);
 const ACCOMMODATION_ADVERTISEMENT_COUNT = 10;
 
-const createData = () => {
+const createAccomodation = () => {
   return {
     author: {
       avatar: AVATAR_URL + getRandomInteger(1, 8) + '.png',
@@ -40,5 +40,7 @@ const createData = () => {
   };
 };
 
-const createArray = new Array(ACCOMMODATION_ADVERTISEMENT_COUNT).fill(null).map (() => createData());
-createArray();
+// Пуш объектов из функции в новый пустой массив
+const createAccomodations = () => new Array(ACCOMMODATION_ADVERTISEMENT_COUNT).fill(null).map (() => createAccomodation());
+
+export {createAccomodations};
