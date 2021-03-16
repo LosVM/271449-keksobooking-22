@@ -1,7 +1,7 @@
 import {getRandomInteger, getRandomFraction} from './util.js';
 
 const AVATAR_URL = 'img/avatars/user0';
-const TITLE = 'Вашему вниманию представляется ';
+const TITLE = 'Вашему вниманию представляется: ';
 const ACCOMMODATION_TYPE = ['palace', 'flat', 'house', 'bungalow']; 
 const TIME = ['12:00', '13:00', '14:00'];
 const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
@@ -23,7 +23,7 @@ const createAccomodation = () => {
     offer: {
       title: TITLE,
       address: LOCATION_X + ', ' + LOCATION_Y,
-      price: getRandomInteger(0, 5000),
+      price: getRandomInteger(0, 10000),
       type: ACCOMMODATION_TYPE[getRandomInteger(0, ACCOMMODATION_TYPE.length -1)],
       rooms: getRandomInteger(1, 5),
       guests: getRandomInteger(1, 8),
