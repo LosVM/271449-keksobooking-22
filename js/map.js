@@ -1,12 +1,10 @@
-import {mainForm} from './page-status.js';
-import {mapFilters} from './page-status.js';
-import {mainFormElements} from './page-status.js';
-import {mapFiltersElements} from './page-status.js';
-import {removeFormAttributes} from './page-status.js';
-import {accomodationsAdd} from './render-data.js';
-import {createAdvertisement} from './render-data.js'
+import {mainForm, mapFilters, mainFormElements, mapFiltersElements, removeFormAttributes} from './page-status.js';
+import {renderPlaces} from './render-data.js';
 
 // L - объект библиотеки
+/* global L:readonly */
+// const L = window.L;
+
 const map = L.map('map-canvas')
   .on('load', () => {
     // событие инициализации карты
@@ -16,16 +14,13 @@ const map = L.map('map-canvas')
     removeFormAttributes(mapFiltersElements);
   })
   .setView({
-    lat: 35.69413318846634, 
-    lng: 139.95300536692068,
+    lat: 35.75099366178015, 
+    lng: 139.8091531319006,
   }, 9);
 
-L.tileLayer(
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  },
-).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',  {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
 
 // создание метки
 const mainPinIcon = L.icon({
@@ -37,8 +32,8 @@ const mainPinIcon = L.icon({
 
 const mainPinMarker = L.marker(
   {
-    lat: 35.69413318846634,
-    lng: 139.95300536692068,
+    lat: 35.75099366178015,
+    lng: 139.8091531319006,
   },
   {
     draggable: true,
@@ -57,28 +52,30 @@ mainPinMarker.on('moveend', (evt) => {
 
 // mainPinMarker.remove();
 
-accomodationsAdd.forEach((advertisement) => {
+const addMapMarkers = (places) => {
   const icon = L.icon({
     iconUrl: 'img/pin.svg',
     iconSize: [40, 40],
     iconAnchor: [20, 40],
   });
 
-  const marker = L.marker({
-    lat: advertisement.location.x,
-    lng: advertisement.location.y,
-  },
-  {
-    icon,
-  },
-  );
+  places.forEach((place) => {
+    const marker = L.marker({
+      lat: place.location.lat,
+      lng: place.location.lng,
+    },  {
+      icon,
+    });
 
-  marker
-    .addTo(map)
-    .bindPopup(
-      createAdvertisement(advertisement),
-      {
-        keepInView: true,
-      },
-    );
-});
+    marker
+      .addTo(map)
+      .bindPopup(
+        renderPlaces(place),
+        {
+          keepInView: true,
+        },
+      );
+  })
+};
+
+export {addMapMarkers};
