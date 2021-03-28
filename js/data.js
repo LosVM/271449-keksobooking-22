@@ -1,46 +1,57 @@
-import {getRandomInteger, getRandomFraction} from './util.js';
+// import {getRandomInteger, getRandomFraction} from './util.js';
 
-const AVATAR_URL = 'img/avatars/user0';
-const TITLE = 'Вашему вниманию представляется: ';
-const ACCOMMODATION_TYPE = ['palace', 'flat', 'house', 'bungalow']; 
-const TIME = ['12:00', '13:00', '14:00'];
-const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-const ACCOMMODATION_DESCRIPTION = 'Здесь будет описание объекта';
-const ACCOMMODATION_PHOTOS = [
-  'http://o0.github.io/assets/images/tokyo/hotel1.jpg', 
-  'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 
-  'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
-];
-const LOCATION_X = getRandomFraction(35.65000, 35.75000, 5);
-const LOCATION_Y = getRandomFraction(139.70000, 139.80000, 5);
-const ACCOMMODATION_ADVERTISEMENT_COUNT = 10;
+// const AVATAR_URL = 'img/avatars/user0';
+// const TITLE = ['Вашему вниманию представляется: ', 'Хит продаж в Токио!', 'Один из лучших вариантов в Токио!'];
+// const TYPE = ['palace', 'flat', 'house', 'bungalow']; 
+// const TIME = ['12:00', '13:00', '14:00'];
+// const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+// const DESCRIPTION = [
+//   'Замечательно место, с панорамным видом на город!',
+//   'Объект находится недалеко от аэропорта. Идеально подойдёт для деловых поездок.',
+//   'В шаговой доступности находятся множество развлекательных заведений.',
+//   'В стоимость бронирования включён бесплатный трансфер от/до аэропорта или вокзала.',
+// ];
+// const PHOTOS = [
+//   'http://o0.github.io/assets/images/tokyo/hotel1.jpg', 
+//   'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 
+//   'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
+// ];
 
-const createAccomodation = () => {
-  return {
-    author: {
-      avatar: AVATAR_URL + getRandomInteger(1, 8) + '.png',
-    },
-    offer: {
-      title: TITLE,
-      address: LOCATION_X + ', ' + LOCATION_Y,
-      price: getRandomInteger(0, 10000),
-      type: ACCOMMODATION_TYPE[getRandomInteger(0, ACCOMMODATION_TYPE.length -1)],
-      rooms: getRandomInteger(1, 5),
-      guests: getRandomInteger(1, 8),
-      checkin: TIME[getRandomInteger(0, TIME.length -1)],
-      checkout: TIME[getRandomInteger(0, TIME.length -1)],
-      features: FEATURES[getRandomInteger(0, FEATURES.length -1)],
-      description: ACCOMMODATION_DESCRIPTION,
-      photos: ACCOMMODATION_PHOTOS[[getRandomInteger(0, ACCOMMODATION_PHOTOS.length -1)]],
-    },    
-    location: {
-      x: LOCATION_X,
-      y: LOCATION_Y,
-    },
-  };
-};
+// const PLACES_COUNT = 10;
 
-// Пуш объектов из функции в новый пустой массив
-const createAccomodations = () => new Array(ACCOMMODATION_ADVERTISEMENT_COUNT).fill(null).map (() => createAccomodation());
+// // const getRandom = (num1, num2) => {
+// //   getRandomInteger(num1, num2);    
+// // };
 
-export {createAccomodations};
+// const createPlace = () => {
+//   const x = getRandomFraction(35.65000, 35.75000, 5);
+//   const y = getRandomFraction(139.70000, 139.80000, 5);
+
+//   return {
+//     author: {
+//       avatar: AVATAR_URL + getRandomInteger(1, 8) + '.png',
+//     },
+//     offer: {
+//       title: TITLE[getRandomInteger(0, TITLE.length - 1)],
+//       address: x + ', ' + y,
+//       price: getRandomInteger(0, 50000),
+//       type: TYPE[getRandomInteger(0, TYPE.length - 1)],
+//       rooms: getRandomInteger(1, 5),
+//       guests: getRandomInteger(1, 8),
+//       checkin: TIME[getRandomInteger(0, TIME.length - 1)],
+//       checkout: TIME[getRandomInteger(0, TIME.length - 1)],
+//       features: FEATURES[getRandomInteger(0, FEATURES.length - 1)],
+//       description: DESCRIPTION[getRandomInteger(0, DESCRIPTION.length - 1)],
+//       photos: PHOTOS[[getRandomInteger(0, PHOTOS.length - 1)]],
+//     },    
+//     location: {
+//       x,
+//       y,
+//     },
+//   };
+// };
+
+// // Пуш объектов из функции в новый пустой массив
+// const places = () => new Array(PLACES_COUNT).fill(null).map (() => createPlace());
+
+// // export {places};

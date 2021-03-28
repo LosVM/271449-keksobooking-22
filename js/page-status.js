@@ -26,4 +26,4 @@ const removeFormAttributes = (data) => {
 setFormAttributes(mainFormElements);
 setFormAttributes(mapFiltersElements);
 
-export {mainForm, mapFilters, mainFormElements, mapFiltersElements, removeFormAttributes};
+export {mainForm, mapFilters, mainFormElements, mapFiltersElements, setFormAttributes, removeFormAttributes};
